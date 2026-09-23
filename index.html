@@ -1,446 +1,103 @@
-<!DOCTYPE html>
+from pathlib import Path
+
+html = """<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>STYLE WEAR - Online Clothing Store</title>
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-
-    body {
-      background: #f7f7f7;
-      color: #111;
-    }
-
-    .topbar {
-      background: #111;
-      color: white;
-      text-align: center;
-      padding: 10px;
-      font-size: 14px;
-    }
-
-    header {
-      background: white;
-      padding: 18px 6%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-    }
-
-    .logo {
-      font-size: 28px;
-      font-weight: 900;
-      letter-spacing: 2px;
-    }
-
-    nav a {
-      color: #111;
-      text-decoration: none;
-      margin: 0 12px;
-      font-weight: bold;
-    }
-
-    .cart {
-      background: #111;
-      color: white;
-      padding: 10px 16px;
-      border-radius: 25px;
-    }
-
-    .hero {
-      min-height: 520px;
-      display: flex;
-      align-items: center;
-      padding: 60px 7%;
-      background:
-        linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
-        url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1600&q=80")
-        center/cover;
-      color: white;
-    }
-
-    .hero-content {
-      max-width: 650px;
-    }
-
-    .hero h1 {
-      font-size: 64px;
-      line-height: 1;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      font-size: 20px;
-      margin-bottom: 30px;
-    }
-
-    .btn {
-      display: inline-block;
-      background: white;
-      color: #111;
-      padding: 14px 25px;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 5px;
-    }
-
-    section {
-      padding: 60px 7%;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 35px;
-      margin-bottom: 35px;
-    }
-
-    .categories {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-
-    .category {
-      height: 180px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 25px;
-      font-weight: bold;
-      border-radius: 10px;
-      background-size: cover;
-      background-position: center;
-      text-shadow: 0 2px 8px #000;
-    }
-
-    .cat1 {
-      background-image: url("https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=80");
-    }
-
-    .cat2 {
-      background-image: url("https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=700&q=80");
-    }
-
-    .cat3 {
-      background-image: url("https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=700&q=80");
-    }
-
-    .cat4 {
-      background-image: url("https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=700&q=80");
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 25px;
-    }
-
-    .product {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 3px 15px rgba(0,0,0,.08);
-    }
-
-    .product img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-    }
-
-    .product-info {
-      padding: 18px;
-    }
-
-    .product h3 {
-      margin-bottom: 8px;
-    }
-
-    .price {
-      font-size: 20px;
-      font-weight: bold;
-      margin: 12px 0;
-    }
-
-    .buy-btn {
-      width: 100%;
-      border: none;
-      background: #111;
-      color: white;
-      padding: 12px;
-      border-radius: 5px;
-      font-size: 15px;
-      cursor: pointer;
-    }
-
-    .offer {
-      background: #111;
-      color: white;
-      text-align: center;
-      padding: 70px 20px;
-    }
-
-    .offer h2 {
-      font-size: 50px;
-      margin-bottom: 15px;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      text-align: center;
-    }
-
-    .feature {
-      background: white;
-      padding: 30px 15px;
-      border-radius: 10px;
-    }
-
-    .feature-icon {
-      font-size: 35px;
-      margin-bottom: 12px;
-    }
-
-    .newsletter {
-      text-align: center;
-      background: #eaeaea;
-    }
-
-    .newsletter input {
-      width: 60%;
-      max-width: 450px;
-      padding: 14px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      margin-top: 20px;
-    }
-
-    .newsletter button {
-      padding: 14px 22px;
-      background: #111;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      margin-left: 5px;
-    }
-
-    footer {
-      background: #111;
-      color: white;
-      padding: 40px 7%;
-      text-align: center;
-    }
-
-    footer p {
-      margin: 8px;
-      color: #ccc;
-    }
-
-    @media (max-width: 800px) {
-      nav {
-        display: none;
-      }
-
-      .hero {
-        min-height: 450px;
-      }
-
-      .hero h1 {
-        font-size: 44px;
-      }
-
-      .categories,
-      .products,
-      .features {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 500px) {
-      .logo {
-        font-size: 22px;
-      }
-
-      .categories,
-      .products,
-      .features {
-        grid-template-columns: 1fr;
-      }
-
-      .hero h1 {
-        font-size: 38px;
-      }
-
-      .offer h2 {
-        font-size: 35px;
-      }
-
-      .newsletter input {
-        width: 100%;
-      }
-
-      .newsletter button {
-        margin-top: 10px;
-        width: 100%;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STYLE WEAR - Online Clothing Store</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f7f7f7;color:#222}.top{background:#111;color:#fff;text-align:center;padding:9px;font-size:13px}.nav{background:#fff;padding:16px 5%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10;box-shadow:0 2px 8px #0002}.logo{font-size:25px;font-weight:900;letter-spacing:2px}.cart{background:#111;color:#fff;border:0;padding:11px 16px;border-radius:7px}.hero{background:linear-gradient(120deg,#111,#444);color:#fff;text-align:center;padding:65px 20px}.hero h1{font-size:48px;margin:0 0 10px}.hero p{font-size:18px}.btn{display:inline-block;background:#fff;color:#111;padding:13px 22px;border-radius:7px;text-decoration:none;font-weight:bold}.wrap{max-width:1200px;margin:auto;padding:35px 18px}h2{text-align:center}.filters{text-align:center;margin:20px 0}.filters button{padding:9px 14px;margin:4px;border:1px solid #ddd;background:#fff;border-radius:20px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px #0001}.card img{width:100%;height:230px;object-fit:cover}.info{padding:13px}.cat{font-size:12px;color:#777}.name{font-weight:bold;margin:6px 0}.old{text-decoration:line-through;color:#999;font-size:13px}.off{color:#d00;font-weight:bold;font-size:12px;margin-left:7px}.price{font-size:19px;font-weight:bold;margin-top:5px}.add{width:100%;margin-top:10px;padding:11px;background:#111;color:#fff;border:0;border-radius:6px}.features{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.feature{background:#fff;padding:20px;text-align:center;border-radius:9px}footer{background:#111;color:#fff;text-align:center;padding:30px}#cart{position:fixed;right:-390px;top:0;width:360px;max-width:90%;height:100%;background:#fff;z-index:20;padding:20px;box-shadow:-5px 0 20px #0003;transition:.3s;overflow:auto}#cart.open{right:0}.close{float:right;padding:7px;border:0}.item{padding:12px 0;border-bottom:1px solid #ddd}.checkout{width:100%;padding:13px;background:#111;color:#fff;border:0;border-radius:6px}@media(max-width:850px){.grid{grid-template-columns:repeat(2,1fr)}.features{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:36px}}@media(max-width:500px){.grid{gap:9px}.card img{height:190px}.info{padding:9px}}
+</style>
 </head>
-
 <body>
+<div class="top">FREE SHIPPING ON ORDERS ABOVE ₹999</div>
+<div class="nav"><div class="logo">STYLE WEAR</div><button class="cart" onclick="openCart()">🛒 Cart (<span id="count">0</span>)</button></div>
 
-  <div class="topbar">
-    FREE SHIPPING ON ORDERS ABOVE ₹999
-  </div>
+<section class="hero"><h1>STYLE YOUR WAY</h1><p>Fashion for Men, Women & Kids — Special Sale Prices</p><a class="btn" href="#products">SHOP NOW</a></section>
 
-  <header>
-    <div class="logo">STYLE WEAR</div>
+<section class="wrap" id="products"><h2>SHOP OUR COLLECTION</h2>
+<div class="filters">
+<button onclick="show('All')">All</button><button onclick="show('Men')">Men</button><button onclick="show('Women')">Women</button><button onclick="show('Kids')">Kids</button><button onclick="show('Footwear')">Footwear</button><button onclick="show('Accessories')">Accessories</button>
+</div><div class="grid" id="grid"></div></section>
 
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#categories">Categories</a>
-      <a href="#products">Shop</a>
-      <a href="#contact">Contact</a>
-    </nav>
+<section class="wrap"><h2>WHY SHOP WITH US?</h2><div class="features">
+<div class="feature">🚚<h3>Fast Delivery</h3><p>Quick doorstep delivery</p></div>
+<div class="feature">↩️<h3>Easy Returns</h3><p>Simple return support</p></div>
+<div class="feature">🔒<h3>Secure Checkout</h3><p>Safe shopping experience</p></div>
+<div class="feature">💬<h3>Support</h3><p>We're here to help</p></div>
+</div></section>
+<footer><h2>STYLE WEAR</h2><p>Online Clothing Store</p><p>© 2026 STYLE WEAR</p></footer>
 
-    <div class="cart">🛒 Cart</div>
-  </header>
+<div id="cart"><button class="close" onclick="closeCart()">✕</button><h2>Your Cart</h2><div id="items"></div><h3>Total: ₹<span id="total">0</span></h3><button class="checkout" onclick="checkout()">Proceed to Checkout</button></div>
 
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <h1>STYLE YOUR WAY</h1>
-      <p>
-        Discover premium fashion, modern streetwear and everyday styles
-        made for you.
-      </p>
-      <a href="#products" class="btn">SHOP NOW</a>
-    </div>
-  </section>
+<script>
+const P=[
+["Men","Classic Black T-Shirt",999,35,"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80"],
+["Men","Premium White Shirt",1999,35,"https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=600&q=80"],
+["Men","Blue Denim Jeans",2499,45,"https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=600&q=80"],
+["Men","Casual Hoodie",2999,45,"https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=600&q=80"],
+["Men","Black Denim Jacket",3999,50,"https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=600&q=80"],
+["Men","Cotton Polo T-Shirt",1499,35,"https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&w=600&q=80"],
+["Men","Slim Fit Trousers",2199,45,"https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=600&q=80"],
+["Men","Festive Kurta",2599,50,"https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80"],
+["Men","Premium Blazer",9999,60,"https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80"],
+["Men","Designer Sherwani",15000,65,"https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80"],
+["Men","Premium Leather Jacket",25100,70,"https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=600&q=80"],
+["Men","Luxury Winter Coat",12500,65,"https://images.unsplash.com/photo-1539533018447-63fcce2678e3?auto=format&fit=crop&w=600&q=80"],
+["Women","Floral Summer Dress",2499,45,"https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=600&q=80"],
+["Women","Elegant Kurti",1999,35,"https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=600&q=80"],
+["Women","Designer Saree",4999,50,"https://images.unsplash.com/photo-1610030469668-8e9f641aaf31?auto=format&fit=crop&w=600&q=80"],
+["Women","Party Wear Suit",5999,55,"https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=600&q=80"],
+["Women","Casual Top",1299,35,"https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=600&q=80"],
+["Women","Wide Leg Jeans",2499,45,"https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=600&q=80"],
+["Women","Winter Jacket",3999,50,"https://images.unsplash.com/photo-1544022613-e87ca75a784a?auto=format&fit=crop&w=600&q=80"],
+["Women","Embroidered Anarkali",7999,60,"https://images.unsplash.com/photo-1594223274512-ad4803739b7c?auto=format&fit=crop&w=600&q=80"],
+["Women","Designer Lehenga",25100,70,"https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80"],
+["Women","Premium Bridal Gown",18000,65,"https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=600&q=80"],
+["Women","Silk Designer Saree",10000,60,"https://images.unsplash.com/photo-1610030469668-8e9f641aaf31?auto=format&fit=crop&w=600&q=80"],
+["Women","Luxury Party Dress",7999,60,"https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=600&q=80"],
+["Kids","Boys Graphic T-Shirt",799,35,"https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=600&q=80"],
+["Kids","Girls Summer Dress",1299,40,"https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?auto=format&fit=crop&w=600&q=80"],
+["Kids","Kids Denim Jeans",1199,35,"https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=600&q=80"],
+["Kids","Boys Kurta Set",1999,45,"https://images.unsplash.com/photo-1622445272461-c6580cab8755?auto=format&fit=crop&w=600&q=80"],
+["Kids","Girls Party Frock",2499,50,"https://images.unsplash.com/photo-1596870230751-ebdfce98ec42?auto=format&fit=crop&w=600&q=80"],
+["Kids","Kids Hoodie",1599,40,"https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=600&q=80"],
+["Kids","School Style Shirt",999,35,"https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=600&q=80"],
+["Kids","Kids Winter Jacket",2999,55,"https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?auto=format&fit=crop&w=600&q=80"],
+["Kids","Premium Party Suit",4999,60,"https://images.unsplash.com/photo-1503919545889-aef636e10ad4?auto=format&fit=crop&w=600&q=80"],
+["Kids","Designer Kids Ethnic Set",3999,55,"https://images.unsplash.com/photo-1622445272461-c6580cab8755?auto=format&fit=crop&w=600&q=80"],
+["Footwear","Urban Sneakers",2999,45,"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80"],
+["Footwear","Classic White Sneakers",2499,40,"https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?auto=format&fit=crop&w=600&q=80"],
+["Footwear","Men Formal Shoes",3999,50,"https://images.unsplash.com/photo-1614252369475-531eba835eb1?auto=format&fit=crop&w=600&q=80"],
+["Footwear","Women Heels",2999,45,"https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=600&q=80"],
+["Footwear","Women Casual Flats",1799,35,"https://images.unsplash.com/photo-1560769629-975ec94e6a86?auto=format&fit=crop&w=600&q=80"],
+["Footwear","Kids Sports Shoes",1599,40,"https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?auto=format&fit=crop&w=600&q=80"],
+["Footwear","Premium Running Shoes",4999,55,"https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=600&q=80"],
+["Footwear","Leather Loafers",3499,45,"https://images.unsplash.com/photo-1533867617858-e7b97e060509?auto=format&fit=crop&w=600&q=80"],
+["Accessories","Classic Backpack",1999,35,"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80"],
+["Accessories","Fashion Handbag",2999,45,"https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=600&q=80"],
+["Accessories","Premium Sunglasses",2499,50,"https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=600&q=80"],
+["Accessories","Classic Cap",799,35,"https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=600&q=80"],
+["Accessories","Leather Belt",1299,40,"https://images.unsplash.com/photo-1624222247344-550fb60583dc?auto=format&fit=crop&w=600&q=80"],
+["Accessories","Fashion Watch",3999,50,"https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=600&q=80"],
+["Accessories","Premium Wallet",1999,45,"https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=600&q=80"],
+["Accessories","Travel Duffle Bag",4999,55,"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80"],
+["Accessories","Winter Scarf",999,35,"https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?auto=format&fit=crop&w=600&q=80"]
+];
 
-  <section id="categories">
-    <h2 class="section-title">SHOP BY CATEGORY</h2>
-
-    <div class="categories">
-      <div class="category cat1">MEN</div>
-      <div class="category cat2">WOMEN</div>
-      <div class="category cat3">STREETWEAR</div>
-      <div class="category cat4">ACCESSORIES</div>
-    </div>
-  </section>
-
-  <section id="products">
-    <h2 class="section-title">TRENDING PRODUCTS</h2>
-
-    <div class="products">
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=80">
-        <div class="product-info">
-          <h3>Premium Black T-Shirt</h3>
-          <div class="price">₹799</div>
-          <button class="buy-btn">ADD TO CART</button>
-        </div>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=700&q=80">
-        <div class="product-info">
-          <h3>Classic Blue Jeans</h3>
-          <div class="price">₹1,499</div>
-          <button class="buy-btn">ADD TO CART</button>
-        </div>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=700&q=80">
-        <div class="product-info">
-          <h3>Premium Black Jacket</h3>
-          <div class="price">₹1,999</div>
-          <button class="buy-btn">ADD TO CART</button>
-        </div>
-      </div>
-
-      <div class="product">
-        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80">
-        <div class="product-info">
-          <h3>Urban Sneakers</h3>
-          <div class="price">₹1,799</div>
-          <button class="buy-btn">ADD TO CART</button>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="offer">
-    <h2>BIG FASHION SALE</h2>
-    <p>UP TO 50% OFF ON SELECTED STYLES</p>
-    <br>
-    <a href="#products" class="btn">SHOP SALE</a>
-  </section>
-
-  <section>
-    <h2 class="section-title">WHY SHOP WITH US?</h2>
-
-    <div class="features">
-
-      <div class="feature">
-        <div class="feature-icon">🚚</div>
-        <h3>Fast Delivery</h3>
-        <p>Quick and reliable delivery.</p>
-      </div>
-
-      <div class="feature">
-        <div class="feature-icon">↩️</div>
-        <h3>Easy Returns</h3>
-        <p>Simple return experience.</p>
-      </div>
-
-      <div class="feature">
-        <div class="feature-icon">🔒</div>
-        <h3>Secure Payment</h3>
-        <p>Safe and secure checkout.</p>
-      </div>
-
-      <div class="feature">
-        <div class="feature-icon">💬</div>
-        <h3>Support</h3>
-        <p>We're here to help.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="newsletter">
-    <h2>JOIN OUR NEWSLETTER</h2>
-    <p>Get the latest styles, offers and fashion updates.</p>
-
-    <input type="email" placeholder="Enter your email">
-    <button>SUBSCRIBE</button>
-  </section>
-
-  <footer id="contact">
-    <h2>STYLE WEAR</h2>
-    <p>Online Clothing Store</p>
-    <p>Email: support@stylewear.com</p>
-    <p>Phone: +91 98765 43210</p>
-    <p>© 2026 STYLE WEAR. All Rights Reserved.</p>
-  </footer>
-
+let cart=[];
+const sale=(p)=>Math.round(p[2]*(1-p[3]/100));
+function show(cat="All"){let list=cat==="All"?P:P.filter(p=>p[0]===cat);document.getElementById("grid").innerHTML=list.map(p=>`<div class="card"><img src="${p[4]}" alt="${p[1]}"><div class="info"><div class="cat">${p[0]}</div><div class="name">${p[1]}</div><div><span class="old">₹${p[2].toLocaleString('en-IN')}</span><span class="off">${p[3]}% OFF</span></div><div class="price">₹${sale(p).toLocaleString('en-IN')}</div><button class="add" onclick="add(${P.indexOf(p)})">Add to Cart</button></div></div>`).join("")}
+function add(i){cart.push(i);update();alert("Product added to cart");}
+function update(){document.getElementById("count").textContent=cart.length;document.getElementById("items").innerHTML=cart.length?cart.map((i,n)=>`<div class="item"><b>${P[i][1]}</b><br>₹${sale(P[i]).toLocaleString('en-IN')} <button onclick="removeItem(${n})">Remove</button></div>`).join(""):"Your cart is empty.";document.getElementById("total").textContent=cart.reduce((s,i)=>s+sale(P[i]),0).toLocaleString('en-IN')}
+function removeItem(n){cart.splice(n,1);update()}function openCart(){document.getElementById("cart").classList.add("open");update()}function closeCart(){document.getElementById("cart").classList.remove("open")}function checkout(){alert("Checkout demo. Payment and real order system will be connected next.")}
+show();
+</script>
 </body>
-</html>
+</html>"""
+
+path = Path("/mnt/data/style-wear-index-new.html")
+path.write_text(html, encoding="utf-8")
+print("नई index.html तैयार है:", path)
+print("Products:", html.count('["Men"')+html.count('["Women"')+html.count('["Kids"')+html.count('["Footwear"')+html.count('["Accessories"'))
