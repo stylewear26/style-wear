@@ -1,6 +1,4 @@
-from pathlib import Path
-
-html = """<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -95,9 +93,4 @@ function removeItem(n){cart.splice(n,1);update()}function openCart(){document.ge
 show();
 </script>
 </body>
-</html>"""
-
-path = Path("/mnt/data/style-wear-index-new.html")
-path.write_text(html, encoding="utf-8")
-print("नई index.html तैयार है:", path)
-print("Products:", html.count('["Men"')+html.count('["Women"')+html.count('["Kids"')+html.count('["Footwear"')+html.count('["Accessories"'))
+</html>
